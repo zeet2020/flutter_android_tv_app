@@ -44,18 +44,22 @@ class _HomePageState extends State<HomePage> {
     var server_url = prefs.getString("server_url");
 
     if (server_url != null && server_url.length > 2) {
-      var url = Uri.parse(server_url);
-      var response = await http.get(url);
-      var videos = (json.decode(response.body) as List)
-          .map((video) => VideoModel.fromJson(video))
-          .toList();
-      return videos;
+      try {
+        var url = Uri.parse(server_url);
+        var response = await http.get(url);
+        var videos = (json.decode(response.body) as List)
+            .map((video) => VideoModel.fromJson(video))
+            .toList();
+        return videos;
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          duration: Duration(seconds: 5),
+          content: Text("Error : " + e.toString()),
+        ));
+      }
     }
 
-
-
     // Parse the JSON response into a list of VideoModel objects.
-
 
     return [];
   }

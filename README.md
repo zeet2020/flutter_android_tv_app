@@ -11,4 +11,8 @@ Is Android Tv Flutter app,
 
 
 ## screenshot 
+![app home screen](./screenshots/connect_to_server.png)
 
+![app side_bar](./screenshots/side_bar.png)
+
+![app connect_server](./screenshots/connect_to_server.png)
